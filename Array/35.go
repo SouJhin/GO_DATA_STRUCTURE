@@ -2,8 +2,22 @@ package main
 
 import "fmt"
 
+func searchInsert(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+	for left <= right {
+		mid := left + (right-1)/2
+		if nums[mid] == target {
+			return mid
+		} else if nums[mid] > target {
+			right = mid - 1
+		} else {
+			left = mid + 1
+		}
+	}
+	return right
+}
+
 func main() {
-	fmt.Printf("1 =====> 🚀🚀🚀 %v\n", 1)
-	fmt.Printf("2 =====> 🚀🚀🚀 %v\n", 2)
-	fmt.Printf("3 =====> 🚀🚀🚀 %v\n", 3)
+	nums := []int{1, 3, 5, 6}
+	fmt.Printf("searchInsert(nums, 5) =====> 🚀🚀🚀 %v\n", searchInsert(nums, 2))
 }
